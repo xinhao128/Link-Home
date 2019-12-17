@@ -1,0 +1,168 @@
+<mat-toolbar class="header">
+	<div class="space"></div>
+	<a routerLink="" class="title"><span>Link<br> Home</span></a>
+	<span class="example-spacer"></span>
+	<div class="task" *ngIf="width > 850">
+	  <ul>
+  		<li><a routerLink="/reservation/new">New Reservation</a></li>
+  		<li><a routerLink="/reservation/incoming/{{(auth.user | async)?.userId}}">Incoming Reservations</a></li>
+      <li>Service History</li>
+    </ul>
+	</div>
+	<div class="dropdown" *ngIf="width > 850">
+	  <button class="dropbtn">More...</button>
+	  <div class="dropdown-content">
+	    <div class="sub-menu">
+			<a href="#">Buy/Sell Furnitures</a>
+			<a href="#">Trading Records</a>
+	    </div>
+	  </div>
+	</div>
+	<div class="navbar-space"></div>
+  <div *ngIf="auth.user | async as user; else sign_in">
+    <div class="dropdown">
+    <button class="dropbtn">
+      Hi, {{user.username}}
+      </button>
+    <div class="dropdown-content">
+        <div class="sub-menu">
+          <a routerLink="/profile">Edit Profile</a>
+          <a (click)="auth.signOut()">Sign Out</a>
+        </div>
+    </div>
+    </div>
+  </div>
+  <ng-template #sign_in>
+  	<a routerLink="/signin" mat-raised-button class="sign-in">
+  	  <i class="fa fa-user fa-fw"></i>
+  	  SIGN IN
+  	</a>
+  </ng-template>
+<!-- 	<div class="dropdown">
+	  <button class="dropbtn dropbtn-icon">CONTACT</button>
+	  <div class="dropdown-content dropdown-content-contact">
+	    <div fxLayout="row" fxLayoutGap="20px">
+	        <div fxFlex="33.3%">
+	          <h4>Address</h4>
+	          <div class="info">
+	            <strong>Student With Muscle Company</strong> <br>
+	            1505 Thompson Street <br>Irvine, CA 92614                
+	          </div>
+	        </div>
+	        <div fxFlex="33.3%">
+	          <h4>Contact Information</h4>
+	          <div class="info">
+	            <i class="fa fa-phone fa-fw"></i> (213) 712-3301<br>
+	            <i class="fa fa-envelope-o fa-fw"></i> link-home-services@gmail.com<br>
+	            <i class="fa fa-weixin fa-fw"></i> linkhome123<br>
+	            <i class="fa fa-facebook-square fa-fw"></i> linkhome123<br>
+	          </div>
+	        </div>
+	        <div fxFlex="33.3%">
+	          <h4>Business Hours</h4>
+	          <div class="info">
+	            Business Hours: <br> 
+	            Mon - Fri: 9:00am - 9:00pm<br>
+	            Sat - Sun: 9:00am - midnight
+	          </div>
+	        </div>
+	    </div>
+	  </div>
+	</div> -->
+	<div class="dropdown">
+	  <button class="dropbtn dropbtn-icon">HELP</button>
+	  <div class="dropdown-content dropdown-content-help">
+	    <div class="instr">
+	      <h4>Where Should I start?</h4>
+	    <ul>
+	      <li>To view the full functionality of our website at a glance, and our contact information, please toggle the hamburger icon on the right.</li>
+	      <li>The main feature of this site allows you to make a moving-service reservation, view incoming reservations, and track service records. </li>
+	      <li>Subsidiary features (hover on More...) allow you to buy or sell used furnitures, and track trading records.</li>
+	      <li>You must sign in (sign up if you don't have an account yet) to access our services.</li>
+	      <li>For mobile phones, please go to Appstore to download <strong>Link-Home</strong>.</li>
+	      <li class="help-redirect">More details regarding reservations and payment methods, please visit our Help page<i class="fa fa-external-link fa-fw"></i>.</li>
+	    </ul>
+	    </div>
+	  </div>
+	</div>
+	<button class="toggle" (click)="displayMenu()" #originFab><i class="fa fa-bars fa-fw"></i></button>
+	<div class="space"></div>
+</mat-toolbar>
+
+<ng-template #overlayMenuList>
+  <div [@slideInOut]="overlayDropped">
+    <div class="overlayMenu">
+      <mat-toolbar class="header overlayHeader">
+    		<div class="space"></div>
+    		<span class="title">Link<br> Home</span>
+            <span class="example-spacer"></span>
+            <button class="toggle" (click)="displayMenu()" #originFab><i class="fa fa-times fa-fw"></i></button>
+    		<div class="space"></div>
+      </mat-toolbar>
+      <div class="overlayContent">
+        <div *ngIf="auth.user | async as user" class="sayHi">
+          Hey, {{user.username}}, how can we help you?
+        </div>
+        <div fxLayout="row" fxLayout.xs="column">
+          <div class="sect" fxFlex="50">
+            <h3>Services</h3>
+            <ul>
+              <li>Make a Reservation</li>
+              <li>View Incoming Reservations</li>
+              <li>Moving-Service Records</li>
+            </ul>
+          </div>
+          <div class="sect" fxFlex="50">
+            <h3>Additional Services</h3>
+            <ul>
+              <li>Buy/Sell Used Furnitures</li>
+              <li>Trade Records</li>
+            </ul>
+          </div>
+        </div>
+        <div fxLayout="row wrap" fxLayout.xs="column">
+          <div class="sect" fxFlex="50">
+            <h3>Settings</h3>
+            <ul>
+              <li><a routerLink="/profile" (click)="closeMenu()">Edit Profile</a></li>
+              <li>Edit Payment Methods</li>
+              <li>More Customizations</li>
+            </ul>
+          </div>
+          <div class="sect" fxFlex="50">
+            <h3>Help</h3>
+            <p class="para">More details regarding reservations, payment methods, or general questions, please visit our Help page</p>
+          </div>
+        </div>
+        <div class="footer">
+          <div fxLayout="row" fxLayout.xs="column">
+            <div class="sect" fxFlex="50">
+              <ul>
+                <li><i class="fa fa-map-marker fa-fw"></i> 1505 Thompson Street, Irvine, CA 92614</li>
+                <li><i class="fa fa-phone fa-fw"></i> 213-712-0012</li>
+                <li><i class="fa fa-envelope-o fa-fw"></i> link-home-services@gmail.com</li>
+              </ul>
+            </div>
+            <div class="sect" fxFlex="50">
+              <ul>
+                <strong>Business Hours</strong>
+                <li>Mon - Fri: 9:00am - 9:00pm</li>
+                <li>Sat - Sun: 9:00am - midnight</li>
+              </ul>
+            </div>
+          </div>
+          <div class="sect">
+            <div class="follow">
+              Follow Us: 
+              <i class="fa fa-weixin fa-fw"></i>(ID: link-home-123)
+              <i class="fa fa-facebook-square fa-fw"></i>(ID: link-home-123)
+            </div>
+          </div>
+          <div class="sect copyright">
+            © 2018 Student with Muscle. All Rights Reserved.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

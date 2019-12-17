@@ -1,0 +1,75 @@
+<div class="sect">
+	<div class="signup-card">
+		<mat-card class="card">
+			<div class="title">
+				Sign up
+			</div>
+			<form [formGroup]="signupForm" (ngSubmit)="signup()" class="form-container">
+			  <mat-form-field>
+			  	<input matInput type="text" formControlName="userName" placeholder="Username" required [errorStateMatcher]="matcher" />
+			    <mat-error *ngIf="userEmail.hasError('pattern')">Username should be longer than 3 chars; only letters and digits</mat-error>
+			  </mat-form-field>		
+			  <mat-form-field>
+			    <input matInput type="email" formControlName="userEmail" placeholder="Email" required [errorStateMatcher]="matcher" />
+			    <mat-error *ngIf="userEmail.hasError('pattern')">Please follow this format: username@example.com</mat-error>
+			  </mat-form-field>				
+			  <mat-form-field>
+			    <input matInput type="password" formControlName="userPassword" placeholder="Password" required [errorStateMatcher]="matcher" />
+			    <mat-error *ngIf="userPassword.hasError('minlength')">Password should be longer than 6 chars.</mat-error>
+			    <mat-error *ngIf="userPassword.hasError('pattern')">Password should include both letters and numbers.</mat-error>
+			  </mat-form-field>
+			  <mat-form-field>
+			    <input matInput type="password" formControlName="confirmPassword" placeholder="Confirm Password" [errorStateMatcher]="matcher" />
+			    <mat-error *ngIf="confirmPassword.hasError('MatchPassword')">Password does not match.</mat-error>
+			  </mat-form-field>
+			  <p>
+			  	Additional contact information (optional)
+			  </p>
+			  <div class="contact" formGroupName="userContacts">
+			  	<mat-form-field>
+				    <input matInput type="text" formControlName="phoneNum" placeholder="Phone Number" [errorStateMatcher]="matcher" />
+				    <mat-error *ngIf="phoneNum.hasError('pattern')">Please follow this format: 213-712-0001.</mat-error>
+				  </mat-form-field>
+				  <mat-form-field>
+				    <input matInput type="text" formControlName="weChatAcct" placeholder="WeChat ID">
+				  </mat-form-field>
+				  <mat-form-field>
+				    <input matInput type="text" formControlName="facebookAcct" placeholder="Facebook ID">
+				  </mat-form-field>
+			  </div>
+			  <p>
+			  	Please select your preferred contact method:
+			  </p>
+  		  <div class="pref-contact">
+						<input type="radio" class="radio_item" formControlName="preferredContact" name="preferredContact" value="email" id="emailAddr">
+						<label class="label_item" for="emailAddr"><i class="fa fa-envelope fa-2x fa-fw"></i></label>
+					<div *ngIf="phoneTouched()">
+						<input type="radio" class="radio_item" formControlName="preferredContact" name="preferredContact" value="phone" id="phone">
+						<label class="label_item" for="phone"><i class="fa fa-phone-square fa-2x fa-fw"></i></label>
+			    </div>
+			    <div *ngIf="weChatTouched()">
+						<input type="radio" class="radio_item" formControlName="preferredContact" name="preferredContact" value="WeChat" id="weChat">
+						<label class="label_item" for="weChat"><i class="fa fa-weixin fa-2x fa-fw"></i></label>
+			    </div>
+			    <div *ngIf="facebookTouched()">
+						<input type="radio" class="radio_item" formControlName="preferredContact" name="preferredContact" value="Facebook" id="facebook">
+						<label class="label_item" for="facebook"><i class="fa fa-facebook-square fa-2x fa-fw"></i></label>
+			    </div>
+		    </div>
+		    <div style="margin: 20px 0 8px 0"><strong>Terms of Service:</strong></div>
+		    	<mat-checkbox formControlName="hasAgreedContract" required><small>I have read and agreed to the terms of service listed below.</small></mat-checkbox>
+		    	<div class="contract scrollbar-near-moon">
+            <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.</p>
+            <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.</p>
+					</div>
+			  <button mat-stroked-button [disabled]="!signupForm.valid" class="card-link" type="submit">SIGN UP</button>
+			</form>
+			<div class="warning" *ngIf="auth.acctInUse">
+				*Sorry, this account has been taken by other users or you may have already registered.
+			</div>
+			<div class="footer">
+				Already Registered? <a routerLink="/signin" (click)="auth.acctInUse=false">&nbsp;Sign in</a>
+			</div>
+		</mat-card>
+	</div>
+</div>

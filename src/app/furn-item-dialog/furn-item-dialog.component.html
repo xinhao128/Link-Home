@@ -1,0 +1,18 @@
+<form [formGroup]="form" (ngSubmit)="submit(form)">
+	<h1 mat-dialog-title>Add/Edit a furniture item</h1>
+	<mat-dialog-content>
+		<mat-form-field class="full-width">
+			<input matInput formControlName="furnName" placeholder="Furniture Item">
+		</mat-form-field>
+		<mat-form-field class="full-width">
+			<input matInput formControlName="furnCnt" placeholder="Count(s)">
+		</mat-form-field>
+		<mat-form-field class="full-width">
+			<textarea matInput formControlName="furnDesp" placeholder="Description"></textarea>
+		</mat-form-field>
+	</mat-dialog-content>
+	<mat-dialog-actions>
+		<button mat-button type="button" (click)="dialogRef.close()">Cancel</button>
+		<button mat-button type="submit">OK</button>
+	</mat-dialog-actions>
+</form>

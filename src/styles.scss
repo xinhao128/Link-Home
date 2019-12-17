@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+@import url('https://fonts.googleapis.com/css?family=Arimo|Poppins|Nunito|Open+Sans|Source+Sans+Pro|Raleway|Questrial|Lato|Montserrat|Roboto|Work+Sans|Arsenal');
+body {
+    background: #f7f9fa;
+    font-family: 'Questrial';
+    padding: 0px !important;
+	margin: 0px !important;
+}
+.mat-step-label {
+	font-family: "Open Sans";
+	font-size: 1.0em;
+}

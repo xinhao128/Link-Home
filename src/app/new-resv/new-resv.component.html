@@ -1,0 +1,172 @@
+<div class="sect">
+	<div class="wrapper">
+		<mat-card>
+			<form [formGroup]="resvForm" (ngSubmit)="submitForm()">
+			  	<mat-vertical-stepper [linear]="isLinear">
+					<mat-step>
+						<ng-template matStepLabel>Get Started</ng-template>
+						<div class="info">
+						    Before you get started, there are a few things to keep in mind:
+						    <ol>
+						    	<li>This form will consist of 5 parts.</li>
+						    	<li>Basic information section will ask about the trip starting point and ending point, and your availability</li>
+						    	<li>Services section will ask you about the type of services you want from our company.</li>
+						    	<li>Furniture section will ask you to provide a list of furniture items that will be moved</li>
+						    	<li>Confirmation section will guide you finalize a time, number of workers, and the fees paid for this service.</li>
+						    	<li>Order Summary section will display all information you've entered. Click "Submit" if you are ready.</li>
+						    </ol>
+						    *Note: Feel free to go back to a section anytime; jumping to other pages will cause all information entered in this form to be lost.
+							</div>
+						<div class="button">
+						  <button type="button" mat-stroked-button color="primary" matStepperNext>Next</button>
+						</div>
+					</mat-step>
+		<!-- 				Step 1: Basic Questions -->
+					<mat-step formGroupName="basicQuestions" [stepControl]="resvForm.get('basicQuestions')">
+						<ng-template matStepLabel>
+						Basic Information
+						</ng-template>
+
+						<h4>Destination</h4>
+						<mat-form-field class="full-width">
+							<input matInput placeholder="From:" formControlName="destFrom" required [errorStateMatcher]="matcher">
+							<mat-hint>Please follow this format: Street Name, City, State, Zip code, Apt No.</mat-hint>
+						</mat-form-field>
+						<mat-form-field class="full-width">
+							<input matInput placeholder="To:" formControlName="destTo" required [errorStateMatcher]="matcher">
+							<mat-hint>Please follow this format: Street Name, City, State, Zip code, Apt No.</mat-hint>
+						</mat-form-field>
+
+						<h4 style="margin-top: 50px">Preferred Time</h4>
+						<p>Choose a time that you will be available</p>
+						<div formGroupName="initTime">
+							<mat-form-field class="partial-width">
+			  					<input matInput [matDatepicker]="picker1" formControlName="workDate" placeholder="Choose a date" [value]="date">
+			  					<mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+			  					<mat-datepicker #picker1 ></mat-datepicker>
+							</mat-form-field>
+							<mat-form-field class="partial-width">
+								<input matInput placeholder="Time From:" formControlName="timeFrom" [matAutocomplete]="time" required>
+							</mat-form-field>
+
+					    <mat-autocomplete #time="matAutocomplete">
+								<mat-option *ngFor="let timeSlot of time$ | async" [value]="timeSlot.time">
+								{{ timeSlot.time }}
+								</mat-option>
+							</mat-autocomplete>
+
+							<div class="button">
+								<button type="button" mat-button color="primary" matStepperPrevious>Back</button>
+								<button type="button" mat-stroked-button color="primary" matStepperNext>Next</button>
+							</div>
+				    	</div>
+				    </mat-step>
+		<!-- 				Step 2: Service Questions -->
+				    <mat-step formGroupName="serviceQuestions" [stepControl]="resvForm.get('serviceQuestions')">
+						<ng-template matStepLabel>
+						Services
+						</ng-template>
+						<mat-form-field>
+						  <mat-select placeholder="Floor Number" formControlName="floor" required> 
+						    <mat-option *ngFor="let floor of floorNum" [value]="floor">
+						      {{floor}}
+						    </mat-option>
+						  </mat-select>
+						   <mat-error *ngIf="floor.hasError('required')">Please choose a floor number</mat-error>
+						</mat-form-field>
+						<div>
+							<mat-slide-toggle formControlName="elevator"></mat-slide-toggle> Has Elevator?
+						</div>
+						<div style="margin-top: 50px">
+							<p>Please choose the type(s) of services you wish to have.</p>
+						</div>
+						<div class="select" formGroupName="serviceType">
+							<div><mat-checkbox formControlName="simpleTask">Small Task</mat-checkbox></div>
+							<div><mat-checkbox formControlName="assembly">Furniture Assembly</mat-checkbox></div>
+							<div><mat-checkbox formControlName="disassembly">Furniture Disassembly</mat-checkbox></div>
+							<div>
+								<mat-checkbox formControlName="packing">Packing</mat-checkbox>
+								<mat-form-field style="margin-left: 20px"><input matInput placeholder="Num of Extra Boxes" formControlName="xtraBoxes" required></mat-form-field>
+							</div>
+						</div>
+						<div class="button">
+							<button type="button" mat-button color="primary" matStepperPrevious>Back</button>
+							<button type="button" mat-stroked-button color="primary" matStepperNext>Next</button>
+						</div>
+				    </mat-step>
+		<!-- 				Step 3: Furniture List -->
+				    <mat-step formGroupName="furnList" [stepControl]="resvForm.get('furnList')">
+							<ng-template matStepLabel>
+							Furniture List
+							</ng-template>
+							<p style="padding-bottom: 15px">Please list all furniture items needed to be moved. Part of the Total charges would be based on the counts and types of furniture items</p>
+							<div class="card-grid" formArrayName="items">
+								<div *ngFor="let item of itemForm.controls; let i=index" [formGroupName]="i">
+									<mat-card class="furn-item">
+										 <div fxLayout="row" fxLayoutGap="10px">
+		        						<div fxFlex="27%">
+													<img src="assets/img_test.jpg" alt="" width="100%"> 
+		        						</div>
+		        						<div fxFlex="73%">
+		        							<div class="furn-heading">
+														<div>{{item.get('furnName').value}}</div>
+														<div>{{item.get('furnCnt').value}}</div>
+													</div>
+													<div class="furn-desp">
+													{{item.get('furnDesp').value}}
+													</div>
+													<div class="overlay-btn">
+														<div class="btn">
+															<button class="btn-edit" type="button" mat-raised-button (click)="addItem(item, i)">Edit</button>
+															<button class="btn-edit" type="button" mat-raised-button (click)="deleteItem(i)">Delete</button>
+														</div>	
+													</div>
+		        						</div>
+		        					</div>
+									</mat-card>
+								</div>
+							</div>
+							<div class="button">
+								<button type="button" mat-raised-button color="primary"(click)="addItem()">Add a 	Furniture Item</button>
+							</div>
+							<div class="button">
+								<button type="button" mat-button color="primary" matStepperPrevious>Back</button>
+								<button type="button" mat-stroked-button color="primary" matStepperNext>Next</button>
+							</div>
+				    </mat-step>
+		<!-- 				Step 4: Finalize Order -->
+				  <mat-step [stepControl]="resvForm.get('confirmation')">
+						<ng-template matStepLabel>Finalize Order (pending)</ng-template>
+						<p>Start Time: ___________</p>
+						<p>Based on the number and types of furniture items and the distance between the starting point and the ending point,
+						we have determined that this moving service would take</p> 
+						<p style="text-align: center"><strong>3</strong> hrs</p>
+						<p>**If no time conflicts**
+						<br>Your service time would be from _______ to ________.</p>
+						<p>**If there are time conflicts**
+						<br>Unfortunately, we could not offer you this time from ______ to _____. Please revise your time.</p>
+						<strong>Revised Time: </strong>
+						<p>Date: ________ Time From:________ </p> <button type="button" mat-raised-button>Check Availability</button>
+						<p>Number of Workers: ______</p>
+						<p>Total Charges: _________</p>
+						<p>**We need to come up with a good algorithm to calculate the time duration, time conflicts and total charges for one particular task** </p>
+						<div class="button">
+							<button type="button" mat-button color="primary" matStepperPrevious>Back</button>
+							<button type="button" mat-stroked-button color="primary" matStepperNext>Next</button>
+						</div>
+					</mat-step>
+		<!-- 				Step 5: Done -->
+					<mat-step>
+						<ng-template matStepLabel>Done</ng-template>
+						<p>You are now done. If you would like to buy or sell any used furnitures, please fill out a separate form. The form would be available under the "Buy/Sell Furniture" section. </p>
+						<p>Thank you for your time to fill out this form. Click "Done" to submit and exit this form.</p>
+						<div class="button">
+							<button type="button" mat-button color="primary" matStepperPrevious>Back</button>
+							<button type="submit" mat-stroked-button color="primary">Done</button>
+						</div>
+					</mat-step>
+				</mat-vertical-stepper>
+			</form>
+		</mat-card>
+	</div>
+</div>

@@ -1,0 +1,22 @@
+<div class="sect">
+	<div class="wrapper">
+		<h2>Incoming Reservations</h2>
+		<p>Note: Here are reservations that you have submitted. They are only "reserved", not 
+		"completed". To view all of the completed reservations, please go to "Service History." </p>
+		<div class="card-grid">
+			<div *ngFor="let resv of incomingResv" >
+				<div class="card-resv">
+					<h4><strong>Submitted: </strong>{{resv.submittedTime}}</h4>
+					<strong>From:</strong> {{resv.basicQuestions.destFrom}}<br>
+					<strong>To:</strong> {{resv.basicQuestions.destTo}} <br> <br>
+					<strong>Start Time:</strong> 2018/09/10 09:00am<br>
+					<div class="card-icons">
+						<i class="material-icons"><a routerLink="/reservation/incoming/{{resv.id}}/view">view_list</a></i>
+						<i class="material-icons"><a (click)="deleteForm(resv.id)">delete</a></i>
+					</div>
+				</div> 
+			</div>
+		</div>
+	</div>
+</div>
+

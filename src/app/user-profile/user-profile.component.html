@@ -1,0 +1,50 @@
+<div class="sect" *ngIf="formService.profileReadMode">
+	<div class="wrapper">
+		<h3 class="heading">General Information</h3>
+		<div class="general-info" *ngIf="auth.user | async as user">
+			<div fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px">
+        <div fxFlex="25">
+          <img src="assets/blank-profile-picture.png" alt="Blank Picture" width="160px"> <br>
+	      </div>
+        <div fxFlex="30">
+          <div class="info-block">
+          	<strong>Username:</strong> <br>{{user.username}}
+          </div>
+          <div class="info-block">
+          	<strong>Email:</strong> <br>{{user.email}}
+          </div>
+          <div class="info-block">
+          	<strong>Phone:</strong> <br>{{user.phone}}
+          </div>
+          <div class="info-block">
+          	<strong>Password:</strong> <br> 
+          	<button mat-raised-button color="accent" [disabled]="true">Reset Password</button>
+          </div>
+	      </div>
+        <div fxFlex="30">
+          <div class="info-block">
+          	<strong>WeChat ID: </strong> <br>{{user.weChat}}
+          </div>
+          <div class="info-block">
+          	<strong>Facebook ID:</strong> <br>{{user.facebook}}
+          </div>
+          <div class="info-block">
+          	<strong>Preferred Contact Method:</strong> <br>{{user.prefContact}}
+          </div>
+          <div class="info-block">
+          	<a class="edit-btn" mat-raised-button routerLink="/profile/edit" (click)="formService.profileReadMode=false">Edit Profile</a>
+          </div>
+	      </div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="sect" *ngIf="formService.profileReadMode">
+	<div class="wrapper">
+			<h3 class="heading">Change Payment Methods</h3>
+			<div class="general-info" *ngIf="auth.user | async as user">
+				Coming soon!
+			</div>
+	</div>
+</div>
+<router-outlet></router-outlet>

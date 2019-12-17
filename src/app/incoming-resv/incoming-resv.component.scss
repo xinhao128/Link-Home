@@ -1,0 +1,69 @@
+.sect {
+	padding: 3.0em;
+	.wrapper {
+		width: 72%;
+		margin: auto;
+		h2 {
+			font-family: "Open Sans";
+			letter-spacing: 1px;
+			font-size: 1.8em;
+			font-weight: 599;
+		}
+		.card-grid {
+			display: grid;
+			grid-gap: 30px;
+			grid-template-columns: repeat(auto-fit, minmax(200px, 400px));
+			.card-resv {
+				padding: 1.7em;
+				background-color: #fff;
+				box-shadow: 0px 5px 20px -5px rgba(0,0,0,0.75);
+				border-radius: 5px;
+				line-height: 1.7em;
+				font-family: "Open Sans";
+				color: #282828;
+				h4 {
+					font-family: "Open Sans";
+					font-size: 1.1em;
+					letter-spacing: 1.5px;
+					margin: 0.8em 0;
+				}
+				.card-icons {
+					display: flex;
+					justify-content: flex-end;
+					color: #6d6d6d;
+					position: relative;
+					.material-icons {
+						margin: 0.5em 0.2em 0 0.5em;
+						padding: 0.2em;
+						border: 2px solid #aaaaaa;
+						border-radius: 50%;
+						z-index: 2;
+						background-color: #fff;
+						a {
+							cursor: pointer;
+							color: inherit;
+							text-decoration: none;
+						}
+					}
+					&:before {
+					content: '';
+					  position: absolute;
+					  border-top: 0.1em solid #fafafa;
+					  background: black;
+					  top: 60%;
+					  width: 100%;
+					  transform: translateY(-50%);
+					  z-index: 1;
+					}
+				}
+			}
+		}
+
+		@media screen and (max-width: 1440px) {
+			width: 80%;
+		}
+		@media screen and (max-width: 1024px) {
+			width: 100%;
+		}
+	}
+}

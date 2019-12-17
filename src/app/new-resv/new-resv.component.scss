@@ -1,0 +1,115 @@
+.sect {
+	padding: 4.0em;
+	background-color: #eeeeee;
+	.wrapper {
+		width: 70%;
+		margin: auto;
+		background-color: white;
+		.info {
+			line-height: 1.7em;
+		}
+		.button {
+			margin-top: 30px;
+		}
+		.select {
+			line-height: 2.2em;
+		}
+		.full-width {
+			width: 100%;
+		}
+		.partial-width {
+			width: 25%;
+			margin-right: 2%;
+		}
+		h2 {
+			font-family: "Open Sans";
+			letter-spacing: 1px;
+			text-align: center;
+			font-size: 2.0em;
+			margin-bottom: 1.0em;
+		}
+		.card-grid {
+			display: grid;
+			grid-gap: 30px;
+			grid-template-columns: repeat(auto-fit, minmax(250px, 330px));
+			.furn-item {
+				background-color: rgba(249, 253, 255,0.45);
+				padding: 0;
+				position: relative;
+				img {
+					float: left;
+					align-items: center;
+				}
+				.furn-heading {
+					overflow: hidden;
+					font-family: "Poppins";
+					padding: 0.32em 0.5em 0.3em 0.15em;
+					display: flex;
+					font-size: 1.25em;
+					font-weight: bold;
+					color: rgb(84, 84, 84);
+					justify-content: space-between;
+					@media screen and (max-width: 768px) {
+						font-size: 14px;
+					}
+				}
+				.furn-desp {
+					color: rgba(104, 104, 104, 0.8);
+					padding: 0 0.5em 0.3em 0.15em;
+					font-size: 0.85em;
+					@media screen and (max-width: 768px) {
+						font-size: 13px;
+					}
+				}
+				.overlay-btn {
+					position: absolute;
+					bottom: 0;
+					left: 100%;
+					right: 0;
+					background-color: rgba(63, 81, 181, 0.6);
+					overflow: hidden;
+					width: 0;
+					height: 100%;
+					transition: 0.5s ease;
+					.btn {
+						position: absolute;
+						top: 50%;
+						left: 50%;
+						-webkit-transform: translate(-50%, -50%);
+						-ms-transform: translate(-50%, -50%);
+						transform: translate(-50%, -50%);
+						display: flex;
+						height: 100%;
+						.btn-edit {
+							font-size: 1.0em;
+							background-color: rgba(58, 74, 165, 0.75);
+							color: white;
+							@media screen and (max-width: 756px) {
+								min-width: 81px;
+								font-size: 12px;
+							}
+							@media screen and (max-width: 390px) {
+								min-width: 62px;
+								font-size: 12px;
+							}
+						}
+					}
+
+				}
+				&:hover .overlay-btn {
+					width: 50%;
+					left: 50%;
+				}
+			}
+		}
+		@media screen and (max-width: 1440px) {
+			width: 80%;
+		}
+		@media screen and (max-width: 1024px) {
+			width: 100%;
+		}
+	}
+	@media screen and (max-width: 768px) {
+		padding: 4.0em 0.8em;
+	}
+}

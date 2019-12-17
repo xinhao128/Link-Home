@@ -1,0 +1,46 @@
+.sect {
+	padding: 2.7em 3.0em;
+	.wrapper {
+		width: 72%;
+		margin: auto;
+		.heading {
+			font-family: "Poppins";
+			letter-spacing: 1px;
+			font-weight: bold;
+			padding: 0.5em 0;
+		}
+		.general-info {
+			background: white;
+			padding: 2em;
+			border-radius: 12px;
+			border: 1px solid #5fa62f;
+			border-top: 3px solid #5fa62f;
+			img {
+				padding: 0.2em 0.2em 0.5em 0.5em;
+			}
+			.info-block {
+				margin: 0 0 2em 0.5em;
+			}
+		}
+		@media screen and (max-width: 1440px) {
+			width: 80%;
+		}
+		@media screen and (max-width: 1024px) {
+			width: 100%;
+		}
+	}
+}
+
+.pict-btn {
+	margin-bottom: 30px;
+	font-size: 13px;
+	background-color: #5fa62f;
+	color: white;
+	font-family: "Poppins";
+}
+.edit-btn {
+	padding: 0 2em;
+	background-color: #5fa62f;
+	color: white;
+	font-family: "Poppins";
+}

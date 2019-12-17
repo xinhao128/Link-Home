@@ -1,0 +1,115 @@
+
+.img-slider {
+	width: 100%;
+	height: 500px;
+	position: relative;
+	.heading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    color: white;
+    text-align: center;
+    h1 {
+		font-size: 3.0em;
+		font-family: "Open Sans";
+		font-weight: 600;
+    }
+    .sub-title {
+    	font-size: 1.5em;
+    	font-family: "Arsenal";
+    }
+    button {
+    	padding: 0.4em 3.0em;
+    	font-size: 1.2em;
+    	font-family: "Open Sans";
+    }
+    @media screen and (max-width: 414px) {
+    	font-size: 14px;
+    	height: 400px;
+    }
+	}	
+	&:before {
+	  content: '';
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3));
+		background-image: -o-linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3));
+		background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3));;
+	}
+}
+
+.sect {
+	padding: 3.0em;
+	min-height: 19em;
+	line-height: 1.7em;
+	text-align: justify;
+	.wrapper {
+		width: 70%;
+		margin: auto;
+		h2 {
+			font-family: "Open Sans";
+			letter-spacing: 1px;
+			text-align: center;
+			font-size: 2.0em;
+			margin-bottom: 1.0em;
+		}
+		@media screen and (max-width: 1440px) {
+			width: 80%;
+		}
+		@media screen and (max-width: 1024px) {
+			width: 100%;
+		}
+	}
+}
+
+.media-wrapper {
+	margin-top: 0.7em;
+	background-color: #cdcdcd;
+}
+
+.card-wrapper {
+	display: flex;
+	justify-content: center;
+	@media screen and (max-width: 425px) {
+		display: block;
+	}
+}
+
+.card {
+	max-width: 31%;
+	margin: 2em 1.8em 3em 1.8em;
+	color: black;
+	.heading {
+		font-size: 1.4em;
+		letter-spacing: 1px;
+		text-align: left;
+	}
+	.card-para {
+		font-family: "Questrial";
+		font-size: 1.1em;
+	}
+	.card-link {
+		font-family: "Open Sans";
+		margin: 0em 0em 1.0em 1.0em;
+		background-color: #43A047;
+		color: white;
+	}
+	@media screen and (max-width: 768px) {
+		max-width: 70%;
+		margin: 2em 1em;
+		font-size: 15px;
+	}
+	@media screen and (max-width: 425px) {
+		max-width: 100%;
+		margin: 2em 0.5em;
+		font-size: 14px;
+	}
+}
+
+.footer {
+	min-height: 3em;
+}

@@ -1,0 +1,275 @@
+.header {
+	position: fixed;
+	height: 3.8em;
+	background-color: rgba(247, 249, 250, 0.8);
+	top: 0;
+	z-index: 3;
+	i {
+		color: #5fa62f;
+		font-size: 1.3em;
+	}
+	.title {
+		font-weight: bold;
+		font-family: "Source Sans Pro";
+		color: white;
+		background-color: #5fa62f;
+		font-size: 1.4em;
+		letter-spacing: 2px;
+		padding: 1.3em 1.0em;
+		margin-bottom: -1.2em;
+		text-decoration: none;
+	}
+	.task {
+		ul li {
+			display: inline;
+			padding: 0 18px;
+			font-size: 0.9em;
+			color: #000;
+			font-family: "Arsenal";
+			a {
+				color: inherit;
+				text-decoration: none;
+			}
+		}
+	}
+	.dropdown {
+	    float: left;
+	    overflow: hidden;
+		.dropbtn {
+			font-family: "Arsenal";
+			background: none;
+			cursor: pointer;
+			border: none;
+			outline: none;
+			font-size: 0.9em;
+			padding: 1.3em 0.5em;
+			margin: 0 0.5em 0 0.1em;
+		}
+		.dropbtn-icon {
+			i {
+				font-size: 1.3em;
+			}
+		}
+		.dropdown-content {
+		    position: absolute;
+		    background-color: rgba(255,255,255,0.95);
+		    opacity: 0;
+		    visibility: hidden;
+		    transition: opacity 500ms, visibility 500ms ease-in;
+		    font-family: "Questrial";
+		    border-top: 0.09em solid #5fa62f;
+		    font-size: 0.8em;
+		    z-index: 999;
+		    box-shadow: 0px 4px 19px -4px rgba(0,0,0,0.5);
+		    .sub-menu {
+	    		a {
+				    color: black;
+				    padding: 20px 24px;
+				    text-decoration: none;
+				    display: block;
+				    cursor: pointer;
+				    &:hover {
+				    	background-color: #f1f1f1;
+				    }
+				    &:active {
+				    	background-color: #cccccc;
+				    }
+	    		}
+		    }
+		}
+		.dropdown-content-contact {
+			left: auto;
+			right: 2%;
+			width: 60%;
+			padding: 1.5em;
+			h4 {
+				padding: 0.5em;
+				font-size: 0.9em;
+				text-align: center;
+				background-color: #5aa826;
+				color: white;
+				font-family: "Montserrat";
+				border-radius: 2px;
+			}
+			.info {
+				padding: 0.5em 0 0 0.5em;
+				line-height: 1.8em;
+				white-space: normal;
+			}
+		}
+		.dropdown-content-help {
+			left: auto;
+			right: 2%;
+			width: 40%;
+			.instr {
+				display: flex;
+				white-space: normal;
+				padding: 0.8em 0.8em 0.8em 0;
+				line-height: 1.6em;
+				h4 {
+					margin: 0.7em 0 0.7em 1.0em;
+					padding: 0.8em;
+					background-color: #5aa826;
+					color: white;
+					font-family: "Montserrat";
+					border-radius: 1px;
+				}
+			}
+			@media screen and (max-width: 768px) {
+				left: auto;
+				right: 2%;
+				width: 80%;
+				font-size: 14px;
+			}
+			@media screen and (max-width: 414px) {
+				left: auto;
+				right: 2%;
+				width: 90%;
+				font-size: 12px;
+			}
+		}
+		&:hover .dropdown-content {
+		    visibility: visible;
+		    opacity: 1;
+		}
+		&:hover .dropbtn {
+			border-top: 5px solid #569929;
+			background-color: #fff;
+		}
+	}
+	.example-spacer {
+	  flex: 1 1 auto;
+	}
+	.navbar-space {
+		width: 4%;
+	}
+	.sign-in {
+		font-family: "Arsenal";
+		background: #5fa62f;
+		color: white;
+		i {
+			color: white;
+		}
+		&:hover {
+			background: #487c25;
+		}
+	}
+	.toggle {
+		background: none;
+		cursor: pointer;
+		border: none;
+		outline: none;
+		font-size: 1.2em;
+		i {
+			color: #4f4f4f;
+		}
+	}
+	.space {
+		width: 15%;
+		@media screen and (max-width: 1440px) {
+			width: 10%;
+		}
+		@media screen and (max-width: 1024px) {
+			width: 0%;
+		}
+	}
+}
+
+.help-redirect {
+	margin-top: 0.7em;
+	border-top: 2px solid #5aa826;
+	color: #318709;
+	i {
+		margin-top: -0.2em;
+	}
+}
+
+.overlayMenu {
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(255, 255, 255, 0.97);
+	line-height: 2.0em;
+	overflow-y: auto;
+	.overlayHeader {
+		background-color: #fff;
+		border-bottom: 2px solid #f1f1f1;
+	}
+	a {
+		cursor: pointer;
+	}
+	.overlayContent {
+		margin: 9.5em 18em 5em 18em;
+		.sayHi {
+			font-size: 1.7em;
+			padding: 0.5em 0.5em 0.8em 0.5em;
+			font-family: "Questrial";
+			color: #4f4f4f;
+			letter-spacing: 1px;
+		}
+		.sect {
+			padding: 0em 3em 1em 1em;
+			h3 {
+				font-family: "Poppins";
+				font-weight: 599;
+				border-left: 4px solid #5aa62f;
+				color: #5aa62f;
+				padding-left: 8px;
+			}
+			ul {
+				padding-left: 0;
+				li {
+					list-style: none;
+					a {
+						text-decoration: none;
+						color: inherit;
+					}				
+				}
+			}
+			.para {
+				line-height: 1.9em;
+				white-space: normal;
+			}
+			.follow {
+				i {
+					font-size: 1.5em;
+					padding: 5px;
+				}
+			}
+		}
+		.copyright {
+			border-top: 2px solid rgba(174, 174, 174, 0.5);
+			color: #565656;
+		}
+		.footer {
+			border-top: 2px solid rgba(89, 170, 87, 0.5);
+			margin-top: 1.5em;
+			font-size: 0.95em;
+			line-height: 1.8em;
+		}
+		@media screen and (max-width: 1600px) {
+			margin: 9.5em 15em 4em 15em;
+		}
+		@media screen and (max-width: 1440px) {
+			margin: 9em 9em 4em 9em;
+		}
+		@media screen and (max-width: 1024px) {
+			margin: 8em 3em 4em 3em;
+			font-size: 15px;
+			.sayHi {
+				padding-top: 1.0em;
+			}
+		}
+		@media screen and (max-width: 900px) {
+			font-size: 14px;
+		}
+	}
+}
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: #b7b7b7; 
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}

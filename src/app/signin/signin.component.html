@@ -1,0 +1,24 @@
+<div class="sect">
+	<div class="signin-card">
+		<mat-card class="card">
+			<div class="title">
+				Welcome Back
+			</div>
+			<form [formGroup]="userForm" (ngSubmit)="signin()" class="form-container">
+			  <mat-form-field>
+			    <input matInput type="email" formControlName="userEmail" placeholder="Email" required>
+			  </mat-form-field>					
+			  <mat-form-field>
+			    <input matInput type="password" formControlName="userPassword" placeholder="Password" required>
+			  </mat-form-field>
+			  <button mat-stroked-button [disabled]="!userForm.valid" class="card-link" type="submit">SIGN IN</button>
+			</form>
+			<div class="warning" *ngIf="auth.userNotExist">
+				*Sorry, your email address or password is invalid.
+			</div>
+			<div class="footer">
+				Don't have an account yet? <a routerLink="/signup" (click)="auth.userNotExist=false">&nbsp;Sign Up</a>
+			</div>
+		</mat-card>
+	</div>
+</div>

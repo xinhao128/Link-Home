@@ -1,0 +1,68 @@
+<ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig" >
+   <div ngxSlickItem *ngFor="let slide of slides" class="slide">
+			<div class="img-slider"[ngStyle]="{'background-image': 'url('+slide.img+')'}">
+				<div class="heading">
+					<h1>Let's get you moving!</h1>
+					<p class="sub-title">Something along the lines about the company's mission, slogan, the purpose of this company, etc</p>
+					<button mat-raised-button>Get Started</button>
+				</div>
+			</div>
+    </div>
+</ngx-slick>
+
+<div class="sect">
+	<div class="wrapper">
+		<h2>About Us</h2>
+		<div fxLayout="row" fxLayout.xs="column" fxLayoutGap="30px" fxLayoutGap.xs="10px">
+			<div fxFlex="55">
+				<p>A short description of this company. When, where, what, why, and how. If the description is too long, we will set up a 
+				separate "About Us" page. Here I will put some pseudo text to fill up this section. Lorem ipsum dolor sit amet, an hendrerit 
+				mnesarchum vim, velit oblique accusam ne qui. Et mea nostrum molestie, saperet legendos cum at. Ut vix modus scripta, aliquip eloquentiam referrentur mea ex.</p>
+			</div>
+			<div fxFlex="45" class="media-wrapper">
+				<p>An image that represents the company; a 1-minute introduction video is even better!</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="sect" style="background-color: #C8E6C9">
+	<div class="wrapper">
+		<h2>Our Services</h2>
+		<div class="card-wrapper">
+
+			<mat-card class="card">
+			  <img mat-card-image src="assets/IMG_0707.jpg" alt="Photo of a Shiba Inu">
+			  <mat-card-content>
+			  	<h3 class="heading">Make A Reservation</h3>
+			    <p class="card-para">
+			      Something that tells why making a reservation is good for customers. Here I will put some pseudo text to fill up this text area. Lorem ipsum dolor sit amet, an hendrerit mnesarchum vim, velit oblique accusam ne qui.
+			    </p>
+			  </mat-card-content>
+			  <mat-card-actions>
+			    <button mat-button class="card-link">GET STARTED</button>
+			  </mat-card-actions>
+			</mat-card>
+
+			<mat-card class="card">
+			  <img mat-card-image src="assets/IMG_0707.jpg" alt="Photo of a Shiba Inu">
+			  <mat-card-content>
+			  	<h3 class="heading">Buy or Sell Used Furnitures</h3>
+			    <p class="card-para">
+			      Something that tells customers why buying or selling used furniture from our company is a good idea. Here I will put some pseudo text to fill up this text area. Lorem ipsum dolor sit amet, an hendrerit mnes archum vim, velit oblique.
+			    </p>
+			  </mat-card-content>
+			  <mat-card-actions>
+			    <button mat-button class="card-link">GET STARTED</button>
+			  </mat-card-actions>
+			</mat-card>
+			
+		</div>
+	</div>
+</div>
+
+<div class="sect footer">
+	<div class="wrapper">
+ 		© 2018 Student with Muscle. All Rights Reserved.
+	</div>
+</div>

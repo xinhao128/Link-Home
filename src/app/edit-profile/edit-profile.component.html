@@ -1,0 +1,56 @@
+<div class="sect">
+	<div class="wrapper">
+		<h3 class="heading">General Information</h3>
+		<form [formGroup]="profileForm" (ngSubmit)="save()">
+			<div class="general-info">
+				<div fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px">
+	        <div fxFlex="25">
+	          <img src="assets/blank-profile-picture.png" alt="Blank Picture" width="140px"> <br>
+	          <button class="pict-btn" mat-raised-button>Change Profile Picture</button>
+		      </div>
+	        <div fxFlex="30">
+	          <div class="info-block">
+							<mat-form-field>
+								<input matInput type="text" formControlName="username" placeholder="Username:">
+							</mat-form-field>	
+	          </div>
+	          <div class="info-block">
+							<mat-form-field>
+								<input matInput type="email" formControlName="email" placeholder="Email:">
+							</mat-form-field>	          
+						</div>
+	          <div class="info-block">
+							<mat-form-field>
+								<input matInput type="text" formControlName="phone" placeholder="Phone:">
+							</mat-form-field>	 	          
+						</div>
+	          <div class="info-block">
+	          	<strong>Password:</strong> <br> 
+	          	<button mat-raised-button color="accent">Reset Password</button>
+	          </div>
+		      </div>
+	        <div fxFlex="30">
+	          <div class="info-block">
+							<mat-form-field>
+								<input matInput type="text" formControlName="weChat" placeholder="WeChat ID:">
+							</mat-form-field>	 		          
+						</div>
+	          <div class="info-block">
+							<mat-form-field>
+								<input matInput type="text" formControlName="facebook" placeholder="Facebook ID:">
+							</mat-form-field>	 	
+						</div>
+	          <div class="info-block">
+							<mat-form-field>
+								<input matInput type="text" formControlName="prefContact" placeholder="Preferred Contact Method:">
+							</mat-form-field>	 		          
+						</div>
+	          <div class="info-block">
+	          	<button type="submit" class="edit-btn" mat-raised-button (click)="formService.profileReadMode=true">Save Profile</button>
+	          </div>
+		      </div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
